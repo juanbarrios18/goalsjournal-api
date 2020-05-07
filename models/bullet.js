@@ -6,7 +6,7 @@ const bulletSchema = new mongoose.Schema({
     required: true
   },
   type: String,
-  level: String,
+  priority: String,
   status: String,
   date: Date,
   day: Number,

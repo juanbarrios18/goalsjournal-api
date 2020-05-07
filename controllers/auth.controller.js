@@ -2,40 +2,26 @@ const User = require('../models/user')
 const passport = require('passport')
 
 // SIGNUP
-module.exports.signup = (req, res, next) => {
-  res.render('users/signup', { layout: 'welcomeLayout' })
-}
-
 module.exports.doSignup = (req, res, next) => {
   console.log('signup req.body: ' + req.body.username)
   User.register(new User({ username: req.body.username }), req.body.password, (err, user) => {
     if (err) {
       console.log(err)
-      return res.render('/users/signup', { layout: 'welcomeLayout' })
+      res.status(401).json({ status: 'wrong username or password' })
     }
     passport.authenticate('local')(req, res, function () {
-      res.redirect('/bullets')
+      res.status(200).json({ status: 'signup success' })
     })
   })
 }
 
 // LOGIN
-module.exports.login = (req, res, next) => {
-  res.render('users/login', { layout: 'welcomeLayout' })
+module.exports.doLogin = (req, res, next) => {
+  res.status(200).json({ status: 'login' })
 }
-
-module.exports.doLogin = passport.authenticate('local', {
-  successRedirect: '/bullets',
-  failureRedirect: '/login'
-})
-
-module.exports.doLogin = passport.authenticate('local', {
-  successRedirect: '/bullets',
-  failureRedirect: '/login'
-})
 
 // LOGOUT
 module.exports.doLogout = (req, res, next) => {
   req.logout()
-  res.status(200).json({ session: 'logout' })
+  res.status(200).json({ status: 'logout' })
 }
