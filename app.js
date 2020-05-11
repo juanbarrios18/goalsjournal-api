@@ -1,6 +1,7 @@
 // VARIABLES
 const createError = require('http-errors')
 const express = require('express')
+const session = require('./config/session.config')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
@@ -21,20 +22,17 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 // AUTHENTICATION
-app.use(require('express-session')({
-  secret: 'Secret message from express session',
-  resave: false,
-  saveUninitialized: false
-}))
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(session)
 passport.use(new PassportLocal(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
+app.use(passport.initialize())
+app.use(passport.session())
 
 // GLOBAL USER
 app.use((req, res, next) => {
-  res.locals.currentUser = req.user
+  res.locals.currentUser = req.session.user
+  req.currentUser = req.session.user
   next()
 })
 

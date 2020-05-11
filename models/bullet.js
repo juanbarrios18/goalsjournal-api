@@ -5,14 +5,28 @@ const bulletSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  type: String,
-  priority: String,
-  status: String,
+  priority: {
+    selected: String,
+    options: {
+      type: [String],
+      default: ['primary', 'secondary', 'others']
+    }
+  },
+  type: {
+    selected: String,
+    options: {
+      type: [String],
+      default: ['task', 'event', 'note']
+    }
+  },
+  status: {
+    selected: String,
+    options: {
+      type: [String],
+      default: ['active', 'completed', 'cancelled']
+    }
+  },
   date: Date,
-  day: Number,
-  month: Number,
-  week: Number,
-  year: Number,
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'

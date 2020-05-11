@@ -1,3 +1,4 @@
+const moment = require('moment')
 const Bullet = require('../lib/bullets')
 const newBullet = new Bullet()
 
@@ -11,8 +12,10 @@ module.exports.getAll = (req, res, next) => {
 }
 
 module.exports.getMonth = (req, res, next) => {
-  const month = Number(req.params.month)
-  newBullet.getMonth(month)
+  const month = req.params.month
+  const userId = req.user.id
+
+  newBullet.getMonth(userId, month)
     .then(bullets => {
       res.status(200).json(bullets)
     })
@@ -21,8 +24,9 @@ module.exports.getMonth = (req, res, next) => {
 
 module.exports.getWeek = (req, res, next) => {
   const week = Number(req.params.week)
+  const userId = req.user.id
 
-  newBullet.getWeek(week)
+  newBullet.getWeek(userId, week)
     .then(bullets => {
       res.status(200).json(bullets)
     })
@@ -30,10 +34,22 @@ module.exports.getWeek = (req, res, next) => {
 }
 
 module.exports.getDay = (req, res, next) => {
+  const userId = req.user.id
   const month = Number(req.params.month)
   const day = Number(req.params.day)
 
-  newBullet.getWeek(month, day)
+  newBullet.getDay(userId, month, day)
+    .then(bullets => {
+      res.status(200).json(bullets)
+    })
+    .catch(e => next(e))
+}
+
+module.exports.getOne = (req, res, next) => {
+  const userId = req.user.id
+  const id = req.params.id
+
+  newBullet.getOne(userId, id)
     .then(bullets => {
       res.status(200).json(bullets)
     })
@@ -42,12 +58,9 @@ module.exports.getDay = (req, res, next) => {
 
 // CREATE
 module.exports.new = (req, res, next) => {
-  const selectOptions = ['task', 'note', 'event'].map(option => {
-    return {
-      value: option
-    }
-  })
-  res.status(200).json(selectOptions)
+  const selectOptions = ['task', 'note', 'event']
+  const priorityOptions = ['primary', 'secondary', 'others']
+  res.status(200).json({ selectOptions, priorityOptions })
 }
 
 module.exports.doNew = (req, res, next) => {
@@ -59,17 +72,17 @@ module.exports.doNew = (req, res, next) => {
 // EDIT
 module.exports.edit = (req, res, next) => {
   newBullet.edit(req.params.id)
-    .then(values => {
-      const bullet = values.bullet
-      const selectOptions = values.selectOptions
-      const statusOptions = values.statusOptions
-      res.status(200).json({ bullet, selectOptions, statusOptions })
+    .then(bullet => {
+      console.log(bullet)
+      res.status(200).json({ bullet })
     })
     .catch(e => next(e))
 }
 
 module.exports.doEdit = (req, res, next) => {
-  newBullet.update(req.params.id, req.body)
+  const id = req.params.id
+  const data = req.body
+  newBullet.update(id, data)
     .then(bullet => res.status(201).json(bullet))
     .catch(e => next(e))
 }
