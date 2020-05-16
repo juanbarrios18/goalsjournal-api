@@ -9,6 +9,7 @@ const passport = require('passport')
 const PassportLocal = require('passport-local')
 const User = require('./models/user')
 const app = express()
+const cors = require('cors')
 require('./config/db.config')
 
 // =====================
@@ -28,6 +29,7 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(cors())
 
 // GLOBAL USER
 app.use((req, res, next) => {
