@@ -29,7 +29,9 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(cors())
+app.use(cors({
+  credentials: true
+}))
 
 // GLOBAL USER
 app.use((req, res, next) => {
