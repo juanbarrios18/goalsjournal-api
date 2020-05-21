@@ -10,11 +10,11 @@ const goalController = require('../controllers/goals.controller')
 
 // AUTH ROUTES
 router.post('/signup', authController.doSignup)
-router.post('/login', passport.authenticate('local'), authController.doLogin)
+router.post('/login', authController.doLogin)
 router.post('/logout', authController.doLogout)
 
 // BULLETS ROUTES
-router.get('/bullets', bulletsController.getAll)
+router.get('/bullets/:userid', bulletsController.getAll)
 router.get('/bullets/new', bulletsController.new)
 router.post('/bullets/new', bulletsController.doNew)
 router.get('/bullets/:id/edit', bulletsController.edit)

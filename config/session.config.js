@@ -10,7 +10,7 @@ const sessionSecret = (!process.env.SECRET_SESSION && process.env.NODE_ENV === '
 if (!sessionSecret) throw new Error('Env var SECRET_SESSION not found or invalid')
 
 module.exports = session({
-  secret: process.env.SECRET_SESSION,
+  secret: process.env.SECRET_SESSION || 'super secret',
   resave: true,
   saveUninitialized: true,
   cookie: {

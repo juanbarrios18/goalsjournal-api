@@ -4,7 +4,8 @@ const newBullet = new Bullet()
 
 // GET DATA
 module.exports.getAll = (req, res, next) => {
-  newBullet.getAll(req.user.id)
+  console.log('getAll reached' + req.params.userid)
+  newBullet.getAll(req.params.userid)
     .then(bullets => {
       res.status(200).json(bullets)
     })

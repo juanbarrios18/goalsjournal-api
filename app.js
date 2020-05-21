@@ -11,6 +11,7 @@ const User = require('./models/user')
 const app = express()
 const cors = require('cors')
 require('./config/db.config')
+require('./config/cors.config')
 
 // =====================
 //  SERVER CONFIGURATION
@@ -19,7 +20,7 @@ require('./config/db.config')
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cookieParser())
+app.use(cookieParser('secret'))
 app.use(express.static(path.join(__dirname, 'public')))
 
 // AUTHENTICATION
@@ -29,9 +30,7 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(cors({
-  credentials: true
-}))
+app.use(cors())
 
 // GLOBAL USER
 app.use((req, res, next) => {
