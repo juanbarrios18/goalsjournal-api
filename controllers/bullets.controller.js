@@ -4,7 +4,6 @@ const newBullet = new Bullet()
 
 // GET DATA
 module.exports.getAll = (req, res, next) => {
-  console.log('getAll reached' + req.params.userid)
   newBullet.getAll(req.params.userid)
     .then(bullets => {
       res.status(200).json(bullets)
@@ -65,7 +64,9 @@ module.exports.new = (req, res, next) => {
 }
 
 module.exports.doNew = (req, res, next) => {
-  newBullet.create(req.body, req.user)
+  // console.log('doNew ' + typeof (req.body))
+  // console.log('doNew ' + JSON.stringify(req.body.data))
+  newBullet.create(req.body.data)
     .then(bullet => res.status(201).json(bullet))
     .catch(e => next(e))
 }

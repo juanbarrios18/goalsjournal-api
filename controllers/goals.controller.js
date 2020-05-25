@@ -3,7 +3,7 @@ const newGoal = new Goal()
 
 // GET DATA
 module.exports.getAll = (req, res, next) => {
-  newGoal.getAll(req.user.id)
+  newGoal.getAll(req.params.userid)
     .then(goals => {
       res.status(200).json(goals)
     })
@@ -44,7 +44,7 @@ module.exports.getCancelled = (req, res, next) => {
 
 // CREATE
 module.exports.doNew = (req, res, next) => {
-  newGoal.create(req.body, req.user)
+  newGoal.create(req.body.data)
     .then(goal => res.status(201).json(goal))
     .catch(e => next(e))
 }
@@ -59,8 +59,10 @@ module.exports.edit = (req, res, next) => {
 }
 
 module.exports.doEdit = (req, res, next) => {
-  console.log(req.body)
-  newGoal.update(req.params.id, req.body)
+  const id = req.params.id
+  const data = req.body
+  console.log(data)
+  newGoal.update(id, data)
     .then(goal => res.status(201).json(goal))
     .catch(e => next(e))
 }

@@ -19,7 +19,7 @@ module.exports.doSignup = (req, res, next) => {
 module.exports.doLogin = (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) { return next(err) }
-    if (!user) { return res.redirect('/login') }
+    if (!user) { return res.json('no user') }
     req.logIn(user, (err) => {
       if (err) { return next(err) }
       return res.status(200).json(req.user.id)

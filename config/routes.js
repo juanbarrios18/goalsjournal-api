@@ -28,14 +28,14 @@ router.get('/bullets/:month/:day', bulletsController.getDay)
 router.get('/bullets/:id', bulletsController.getOne)
 
 // GOALS ROUTES
-router.get('/goals', goalController.getAll)
+router.get('/goals/:userid', goalController.getAll)
 router.get('/goals/active', goalController.getActive)
 router.get('/goals/completed', goalController.getCompleted)
 router.get('/goals/cancelled', goalController.getCancelled)
 router.post('/goals/new', goalController.doNew)
 router.get('/goals/:id', goalController.getOne)
 router.get('/goals/:id/edit', goalController.edit)
-router.put('/goals/:id/edit', goalController.doEdit)
+router.post('/goals/:id/edit', goalController.doEdit)
 router.post('/goals/:id/delete', goalController.delete)
 
 module.exports = router
