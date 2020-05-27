@@ -1,0 +1,742 @@
+{
+	"info": {
+		"_postman_id": "da7721c3-2227-4c89-ba60-72b6faa5fc6e",
+		"name": "Goals Journal API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"jb\",\n\t\"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"jb\",\n\t\"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/signup",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"jb\",\n\t\"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/logout",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "bullets",
+			"item": [
+				{
+					"name": "Bullets - getAll",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "jb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/bullets/:userid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bullets",
+								":userid"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "5ec012ac4775b700040c9d78",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "userid",
+									"value": "5ec012ac4775b700040c9d78"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bullets - Day",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "jb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/bullets/:month/:day",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"bullets",
+								":month",
+								":day"
+							],
+							"variable": [
+								{
+									"key": "month",
+									"value": ""
+								},
+								{
+									"key": "day",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bullets - Month",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "jb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/bullets/month/:month",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"bullets",
+								"month",
+								":month"
+							],
+							"variable": [
+								{
+									"key": "month",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bullets - Week",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "jb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/bullets/week/:week",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"bullets",
+								"week",
+								":week"
+							],
+							"variable": [
+								{
+									"key": "week",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bullets - New",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "jb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"data\":\n\t{\n\t\t\"name\": \"Test\",\n\t\t\"type\": { \"selected\": \"primary\" },\n\t\t\"priority\": { \"selected\": \"primary\" },\n\t\t\"status\": { \"selected\": \"active\" },\n\t\t\"date\": \"2020-05-07T00:00:00.000+00:00\",\n\t\t\"userId\": \"5ec012ac4775b700040c9d78\"\n\t}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/bullets/new",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"bullets",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bullets - PUT Edit",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "jb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"prueba\",\n\t\"type\": {\n\t\t\"selected\": \"primary\"\n\t\t},\n\t\"priority\": {\n\t\t\"selected\": \"primary\"\n\t\t},\n\t\"status\": {\n\t\t\"selected\": \"pending\"\n\t\t},\n\t\"date\": \"2020-05-07T00:00:00.000+00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/bullets/:id/edit",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"bullets",
+								":id",
+								"edit"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5ec81cc9784ef9068a0d1277"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bullets - GET Edit",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "jb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/bullets/:id/edit",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"bullets",
+								":id",
+								"edit"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bullets - getOne",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "jb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/bullets/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"bullets",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "goals",
+			"item": [
+				{
+					"name": "Goals - New",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"desarrollar API para Goals Journal\",\n\t\"description\": \"descripcion de como afrontare el problema y las tareas por hacer\",\n\t\"deadline\": \"2020-05-30T00:00:00.000+00:00\",\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/goals/new",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"goals",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Goals - edit GET",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/goals/:id/edit",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"goals",
+								":id",
+								"edit"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Goals - edit PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"desarrollar API para Goals Journal\",\n    \"status\": {\n        \"selected\": \"completed\"\n    },\n    \"description\": \"descripcion de como afrontare el problema y las tareas por hacer\",\n    \"deadline\": \"2020-05-11\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/goals/:id/edit",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"goals",
+								":id",
+								"edit"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5eb7f29afba7d92bed1c4bc2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Goals - delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/goals/:id/delete",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"goals",
+								":id",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5eb7f0e2298eed2a2d60ffd3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Goals - getAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/goals/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"goals",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5ec012ac4775b700040c9d78"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Goals - getOne",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/goals/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"goals",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5eb7f0e2298eed2a2d60ffd3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Goals - Views - getActive",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/goals/active",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"goals",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Goals - Views - getCompleted",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/goals/completed",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"goals",
+								"completed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Goals - Views - getCancelled",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/goals/cancelled",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"goals",
+								"cancelled"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

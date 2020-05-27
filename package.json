@@ -29,15 +29,6 @@
     "node": "13.14.0"
   },
   "devDependencies": {
-    "cross-env": "^7.0.2",
-    "jest": "^26.0.1",
-    "nodemon": "^2.0.3",
-    "supertest": "^4.0.2"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ]
+    "nodemon": "^2.0.3"
   }
 }

@@ -7,7 +7,7 @@ module.exports.doSignup = (req, res, next) => {
   User.register(new User({ username: req.body.username }), req.body.password, (err, user) => {
     if (err) {
       console.log(err)
-      res.status(401).json({ status: 'wrong username or password' })
+      res.status(401).json({ status: 'User already exists or missing parameters' })
     }
     passport.authenticate('local')(req, res, function () {
       res.status(200).json({ status: 'signup success' })

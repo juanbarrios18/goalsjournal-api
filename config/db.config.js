@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
 require('dotenv').config()
 
-const mongodbConnection = (process.env.NODE_ENV === 'DEV') ? 'mongodb://localhost:27017/goalsjournal-api' : process.env.MONGODB_URI
-
+const mongodbConnection = (process.env.NODE_ENV === 'dev') ? 'mongodb://localhost:27017/goalsjournal-api' : process.env.MONGODB_URI
 mongoose
   .connect(mongodbConnection, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.info(`Successfully connected to the database ${mongodbConnection}`))

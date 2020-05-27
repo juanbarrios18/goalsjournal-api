@@ -1,9 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const passport = require('passport')
 
 // MIDDLEWARES / CONTROLLERS
-const authMiddleware = require('../middlewares/auth.middleware')
 const bulletsController = require('../controllers/bullets.controller')
 const authController = require('../controllers/auth.controller')
 const goalController = require('../controllers/goals.controller')
