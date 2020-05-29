@@ -13,7 +13,7 @@ module.exports.getAll = (req, res, next) => {
 
 module.exports.getMonth = (req, res, next) => {
   const month = req.params.month
-  const userId = req.user.id
+  const userId = req.params.id
 
   newBullet.getMonth(userId, month)
     .then(bullets => {
@@ -24,7 +24,7 @@ module.exports.getMonth = (req, res, next) => {
 
 module.exports.getWeek = (req, res, next) => {
   const week = Number(req.params.week)
-  const userId = req.user.id
+  const userId = req.params.id
 
   newBullet.getWeek(userId, week)
     .then(bullets => {
@@ -34,7 +34,7 @@ module.exports.getWeek = (req, res, next) => {
 }
 
 module.exports.getDay = (req, res, next) => {
-  const userId = req.user.id
+  const userId = req.params.id
   const month = Number(req.params.month)
   const day = Number(req.params.day)
 
@@ -46,7 +46,7 @@ module.exports.getDay = (req, res, next) => {
 }
 
 module.exports.getOne = (req, res, next) => {
-  const userId = req.user.id
+  const userId = req.params.userid
   const id = req.params.id
 
   newBullet.getOne(userId, id)
@@ -65,7 +65,7 @@ module.exports.new = (req, res, next) => {
 
 module.exports.doNew = (req, res, next) => {
   // console.log('doNew ' + typeof (req.body))
-  // console.log('doNew ' + JSON.stringify(req.body.data))
+  console.log('doNew ' + JSON.stringify(req.body.data))
   newBullet.create(req.body.data)
     .then(bullet => res.status(201).json(bullet))
     .catch(e => next(e))

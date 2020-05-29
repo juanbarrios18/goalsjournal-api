@@ -19,7 +19,7 @@ module.exports.getOne = (req, res, next) => {
 }
 
 module.exports.getActive = (req, res, next) => {
-  newGoal.getActive(req.user.id)
+  newGoal.getActive(req.params.id)
     .then(goals => {
       res.status(200).json(goals)
     })
@@ -27,7 +27,7 @@ module.exports.getActive = (req, res, next) => {
 }
 
 module.exports.getCompleted = (req, res, next) => {
-  newGoal.getCompleted(req.user.id)
+  newGoal.getCompleted(req.params.id)
     .then(goals => {
       res.status(200).json(goals)
     })
@@ -35,7 +35,7 @@ module.exports.getCompleted = (req, res, next) => {
 }
 
 module.exports.getCancelled = (req, res, next) => {
-  newGoal.getCancelled(req.user.id)
+  newGoal.getCancelled(req.params.id)
     .then(goals => {
       res.status(200).json(goals)
     })

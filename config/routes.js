@@ -20,16 +20,16 @@ router.post('/bullets/:id/edit', bulletsController.doEdit)
 router.post('/bullets/:id/delete', bulletsController.delete)
 
 // BULLETS VIEWS
-router.get('/bullets/month/:month', bulletsController.getMonth)
-router.get('/bullets/week/:week', bulletsController.getWeek)
-router.get('/bullets/:month/:day', bulletsController.getDay)
-router.get('/bullets/:id', bulletsController.getOne)
+router.get('/bullets/:userid/month/:month', bulletsController.getMonth)
+router.get('/bullets/:userid/week/:week', bulletsController.getWeek)
+router.get('/bullets/:userid/:month/:day', bulletsController.getDay)
+router.get('/bullets/:userid/:id', bulletsController.getOne)
 
 // GOALS ROUTES
 router.get('/goals/:userid', goalController.getAll)
-router.get('/goals/active', goalController.getActive)
-router.get('/goals/completed', goalController.getCompleted)
-router.get('/goals/cancelled', goalController.getCancelled)
+router.get('/goals/:userid/active', goalController.getActive)
+router.get('/goals/:userid/completed', goalController.getCompleted)
+router.get('/goals/:userid/cancelled', goalController.getCancelled)
 router.post('/goals/new', goalController.doNew)
 router.get('/goals/:id', goalController.getOne)
 router.get('/goals/:id/edit', goalController.edit)
